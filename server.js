@@ -22,17 +22,17 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/view/MainPage.html'));
 })
 
-app.post('/SearchUrl/', Searching)
+app.get('/SearchUrl/', Searching)
 
-function Searching(req, res) {
-    let chk = req.query;
-    console.log(chk)
+async function Searching(req, res) {
+    let chk = req.query.SearchUrl;
+    let crawled_web = crawler.crawl_web(chk);
+    var index = crawled_web.index;
+    var graph = crawled_web.graph;
+    let ranks = Compute_ranks.compute_ranks(graph)
+    console.log(ranks)
 }
-let crawled_web = crawler.crawl_web("http://udacity.github.io/cs101x/index.html");
-var index = crawled_web.index;
-var graph = crawled_web.graph;
-let ranks = Compute_ranks.compute_ranks(graph)
-console.log(ranks)
+
 
 
 

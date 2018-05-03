@@ -50,24 +50,19 @@
         </div>
     </div>
     <script>
-        
-        console.log("hello")
         $('#submitbtn').click(function () {
             var chk = document.getElementById("value").value;
-            console.log("chkkk" + chk)
-            console.log("hello2")
             $.ajax({
                 url: '/SearchUrl/',
                 data:{
                        SearchUrl: chk
                     },
                 dataType: 'text',
-                method: 'POST',
+                method: 'GET',
                 success: (data) => { console.log(data) },
                 error:null
-
             })
-    })
+        })
     </script>
 </body>
 </html>
