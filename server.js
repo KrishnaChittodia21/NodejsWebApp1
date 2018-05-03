@@ -25,9 +25,8 @@ app.get('/', function (req, res) {
 app.post('/SearchUrl/', Searching)
 
 function Searching(req, res) {
-    let chk = req.body.SearchUrl;
+    let chk = req.query;
     console.log(chk)
-    
 }
 let crawled_web = crawler.crawl_web("http://udacity.github.io/cs101x/index.html");
 var index = crawled_web.index;
