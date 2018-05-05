@@ -22,16 +22,14 @@ app.get('/', function (req, res) {
     res.sendFile(path.resolve(__dirname + '/view/MainPage.html'));
 })
 
-app.get('/SearchUrl/', Searching)
-
-async function Searching(req, res) {
+app.get('/SearchUrl/', function (req,res) {
     let chk = req.query.SearchUrl;
     let crawled_web = crawler.crawl_web(chk);
     var index = crawled_web.index;
     var graph = crawled_web.graph;
-    let ranks = Compute_ranks.compute_ranks(graph)
-    console.log(ranks)
-}
+    let ranks = Compute_ranks.compute_ranks(graph);
+    res.send(ranks);
+}) 
 
 
 
